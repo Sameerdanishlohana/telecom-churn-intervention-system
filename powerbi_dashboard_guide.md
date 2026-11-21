@@ -107,3 +107,4 @@ CALCULATE(
 - [x] **No Historical Trend Implication:** All charts are cross-sectional snapshots tied to `SnapshotDate` (`2026-11-21`) and `LoadBatchID`.
 - [x] **Surrogate & Business Keys:** Slicers and tables display `CustomerID` (business key) while relationships join on surrogate integer keys.
 - [x] **Verified Metric Match:** Churn rate strictly equals 26.54%, Total Monthly Revenue matches $456,116.60.
+
