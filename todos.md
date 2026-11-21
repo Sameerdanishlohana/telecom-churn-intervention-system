@@ -16,29 +16,33 @@
 
 ---
 
-## [IN PROGRESS] Phase 2: Database Schema & Staging / Lakehouse DDLs (MySQL 8.0)
-- [ ] Create database initialization and staging tables DDL (`sql/01_staging_bronze_ddl.sql`)
+## [DONE] Phase 2: Database Schema & Staging / Lakehouse DDLs (MySQL 8.0)
+- [x] Create database initialization and staging tables DDL (`sql/01_staging_bronze_ddl.sql`)
   - `stg_customers`, `stg_tickets`, `stg_plans`
-- [ ] Create Lakehouse / Dimensional Warehouse DDL (`sql/02_silver_gold_warehouse_ddl.sql`)
+- [x] Create Lakehouse / Dimensional Warehouse DDL (`sql/02_silver_gold_warehouse_ddl.sql`)
   - Dimensions: `DimCustomer`, `DimContract`, `DimPayment`, `DimSnapshotDate`
   - Snowflaked Service Dimension: `DimService` -> `DimServiceCategory`
   - Fact Tables: `FactCustomerChurn`, `FactCustomerService`, `FactRetentionAction` (AI write-back)
-- [ ] Implement Data Mart Views (`Customer Mart` & `Retention Mart`) & Indexing Strategy (`sql/03_indexes_and_marts.sql`)
+- [x] Implement Data Mart Views (`Customer Mart` & `Retention Mart`) & Indexing Strategy (`sql/03_indexes_and_marts.sql`)
   - PKs, unique business keys, FK join indexes, composite filter indexes `(RiskLevel, RecommendedAction)`
   - Formal documentation on R-Tree non-applicability (non-spatial data)
+- [x] Verified creation of all 12 warehouse tables and 2 views in local MySQL 8.0.46 instance.
 
 ---
 
-## [PENDING] Phase 3: Robust ETL Pipeline (Python + Pandas + SQLAlchemy)
-- [ ] Implement `src/etl_pipeline.py`:
+## [DONE] Phase 3: Robust ETL Pipeline (Python + Pandas + SQLAlchemy)
+- [x] Implement `src/etl_pipeline.py`:
   - **Extract**: Ingest CSVs into Staging / Bronze layer with audit logs (`LoadBatchID`, timestamps)
-  - **Transform**: Text trimming, standardise Yes/No/binary flags, handle blank `TotalCharges` -> `NULL`/median/numeric casting, duplicate check on `customerID`, derive `ChurnFlag`, `TenureBand`, surrogate keys
+  - **Transform**: Text trimming, standardise Yes/No/binary flags, handle blank `TotalCharges` -> `0.00` with audit, duplicate check on `customerID`, derive `ChurnFlag`, `TenureBand`, surrogate keys
   - **Load**: Dimensions first, Facts second with referential integrity; Bronze -> Silver -> Gold
-- [ ] Execute ETL pipeline and perform data quality reconciliation (row counts, null audits, FK referential validity)
+- [x] Execute ETL pipeline and perform data quality reconciliation:
+  - Staging Customers: 7,043 | DimCustomer: 7,043 | FactCustomerChurn: 7,043 (100% matched)
+  - FactCustomerService bridge: 70,430 rows (10 services $\times$ 7,043 customers)
+  - Verified Customer Mart View: 7,043 records, $456,116.60 monthly revenue ($139,130.85 churned, 26.54% churn rate)
 
 ---
 
-## [PENDING] Phase 4: Exploratory Data Analysis (EDA) & Agent Rule Tuning
+## [IN PROGRESS] Phase 4: Exploratory Data Analysis (EDA) & Agent Rule Tuning
 - [ ] Complete `notebooks/01_eda_and_rule_tuning.ipynb`
   - Churn breakdown across contract types, tenure bands, monthly charges quartiles, internet services, payment methods, support ticket counts
   - Calibrate and justify heuristic rule point weights based on statistical churn propensity

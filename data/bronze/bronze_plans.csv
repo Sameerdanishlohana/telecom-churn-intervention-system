@@ -1,0 +1,9 @@
+PlanID,PlanName,ServiceCategory,BaseMonthlyRate,ContractDiscount1Yr,ContractDiscount2Yr,EligibleRetentionOffer
+PLN-DSL-01,DSL Basic Connection,Internet,29.99,0.05,0.1,Free Speed Upgrade for 6 Months
+PLN-DSL-02,DSL Turbo Speed,Internet,44.99,0.08,0.15,15% Monthly Discount on 12-Month Contract
+PLN-FO-01,Fiber Optic Standard,Internet,70.0,0.1,0.2,Offer a discounted 12- or 24-month contract
+PLN-FO-02,Fiber Optic Premium Ultra,Internet,99.99,0.12,0.22,Offer a discounted 12- or 24-month contract & Autopay Waiver
+PLN-PH-01,Single Line Phone Service,Phone,20.0,0.05,0.1,Free Unlimited International Calling Pack for 3 Months
+PLN-PH-02,Multi-Line Phone Family Pack,Phone,35.0,0.08,0.15,Family Line Add-on Discount
+PLN-SEC-01,Cyber & Tech Support Essential,Security/Support,15.0,0.1,0.2,Offer a free 3-month TechSupport / OnlineSecurity bundle
+PLN-STR-01,All-Access Streaming Bundle,Streaming,25.0,0.1,0.18,Free Streaming Pass for 2 Months
