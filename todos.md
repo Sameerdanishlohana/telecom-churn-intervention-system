@@ -42,25 +42,31 @@
 
 ---
 
-## [IN PROGRESS] Phase 4: Exploratory Data Analysis (EDA) & Agent Rule Tuning
-- [ ] Complete `notebooks/01_eda_and_rule_tuning.ipynb`
-  - Churn breakdown across contract types, tenure bands, monthly charges quartiles, internet services, payment methods, support ticket counts
-  - Calibrate and justify heuristic rule point weights based on statistical churn propensity
+## [DONE] Phase 4: Exploratory Data Analysis (EDA) & Agent Rule Tuning
+- [x] Complete churn distribution and risk driver analysis:
+  - Contract type impact: Month-to-month = **42.71%** churn vs Two-year = **2.83%** churn
+  - Tenure band impact: 0-12 Months = **47.44%** churn vs 49+ Months = **9.51%** churn
+  - Payment method impact: Electronic check = **45.29%** churn vs AutoPay = **~15.9%** churn
+  - Support ticket impact: Multi-ticket frequency correlation observed and calibrated
+- [x] Heuristic point weights validated and aligned with statistical propensity
 
 ---
 
-## [PENDING] Phase 5: Intelligent Agent & LLM Intervention Engine
-- [ ] Implement perceive-reason-act rule engine in `src/retention_agent.py`
-  - Compute `RiskScore` (0–100 capped), assign `RiskLevel` (Low: 0–39, Medium: 40–69, High: 70–100)
-  - Decision table mapping risk level and context to actionable retention offers
-- [ ] Implement LLM explanation and draft communication module in `src/llm_explainer.py`
-  - Strict structured JSON prompt, low temperature, strict grounding on structured facts
-  - Deterministic offline fallback template when API key is unconfigured
-- [ ] Write-back AI results to `FactRetentionAction` and `Retention Mart`
+## [DONE] Phase 5: Intelligent Agent & LLM Intervention Engine
+- [x] Implement perceive-reason-act rule engine in `src/retention_agent.py` and `src/run_agent.py`
+  - Computed `RiskScore` (0–100 capped), assigned `RiskLevel` (Low: 0–39, Medium: 40–69, High: 70–100)
+  - Evaluated 7,043 customers:
+    - **High Risk:** 81 customers (**83.95% actual churn rate**, $6,728.05 monthly revenue at stake)
+    - **Medium Risk:** 2,429 customers (**50.39% actual churn rate**, $198,508.05 monthly revenue at stake)
+    - **Low Risk:** 4,533 customers (**12.73% actual churn rate**, $250,880.50 monthly revenue)
+- [x] Implement LLM explanation and draft communication module in `src/llm_explainer.py`
+  - Generated human-in-the-loop notes and customized draft messages grounded strictly in structured fields
+- [x] Executed full write-back into `FactRetentionAction` and synchronized `FactCustomerChurn.RiskScore`
+- [x] Benchmarked MySQL query plans with `EXPLAIN` (Verified composite index `idx_retention_risk_action` running `Using index`)
 
 ---
 
-## [PENDING] Phase 6: Power BI Reporting & Final Deliverables
+## [IN PROGRESS] Phase 6: Power BI Reporting & Final Deliverables
 - [ ] Build 4-page Power BI Dashboard:
   1. Executive Overview (KPI cards: total customers, churn rate, monthly revenue at risk)
   2. Customer Segments (Churn rate by contract, tenure, payment, internet service)
