@@ -57,6 +57,14 @@ DWBI/
 
 ---
 
+## 📊 Dimensional Modeling & Data Mart Architecture
+- **Snowflaked Service Dimension:** `DimService` normalizes operational telecom add-ons (DSL, Fiber, OnlineSecurity, Streaming) linked to outrigger `DimServiceCategory`.
+- **Many-to-Many Resolution:** Handled through the `FactCustomerService` bridge table (70,430 rows).
+- **AI Decision Support Mart:** `FactRetentionAction` captures automated customer churn intervention scores (0-100), risk tiers (Low/Medium/High), actionable offers, and LLM explainability narratives written directly back from the DeepSeek reasoning engine.
+- **Power BI Implementation:** 4-page executive and operational dashboard connected via Star Schema to local MySQL 8.0 warehouse.
+
+---
+
 ## 🚀 Setup Instructions
 1. Clone the repository and navigate into the workspace:
    ```bash
