@@ -65,6 +65,28 @@ DWBI/
 
 ---
 
+## 🖥️ Interactive Power BI Dashboard
+
+The project includes an executive-grade 4-page Power BI dashboard designed in a warm neutral beige and charcoal aesthetic with dynamic KPI metric switching:
+
+### 1. Executive Overview
+![Executive Overview](docs/images/01_executive_overview.png)
+*Highlights: 7,043 Customers, 26.54% Churn Rate, $456.12K Total Monthly Revenue, $139.13K Revenue at Churn Risk, 81 High Risk Customers.*
+
+### 2. Customer Segments
+![Customer Segments](docs/images/02_customer_segments.png)
+*Highlights: Churn rate by tenure band (0–12 Months at 47.44%), payment method breakdown (Electronic check at 45.29%), and demographic splits.*
+
+### 3. Service & Billing Analysis
+![Service and Billing](docs/images/03_service_billing.jpg)
+*Highlights: Monthly charge distribution histogram, service churn propensity (Fiber Optic leading at 41.89%), and service category matrix.*
+
+### 4. AI Retention Actions & LLM Explainability
+![Retention Actions](docs/images/04_retention_actions.jpg)
+*Highlights: Risk score distribution, 81 High-Risk customers prioritized, action breakdown, and live LLM write-back explanations displayed directly in the CRM queue.*
+
+---
+
 ## 🚀 Setup Instructions
 1. Clone the repository and navigate into the workspace:
    ```bash
