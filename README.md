@@ -4,7 +4,7 @@
 **Institution:** FAST National University of Computer and Emerging Sciences, Karachi  
 **Team:**  
 - Sameer Danish (Group Leader) - 24K-2504  
-- Muhammad Arham Arshad - 24K-2529  
+- Muhammad Arham - 24K-2529  
 - Hadeer Abbas - 24K-2503  
 
 ---
